@@ -79,6 +79,12 @@
   
   //允许编辑图片
   imagePicker.allowsEditing = YES;
+
+  /*
+   如果这里allowsEditing设置为false，则下面的UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+   应该改为： UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+   也就是改为原图像，而不是编辑后的图像。
+   */
   
   //创建UIPopoverController对象前先检查当前设备是不是ipad
   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -98,6 +104,7 @@
 {
   //通过info字典获取选择的照片
   UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+
   
   //以itemKey为键，将照片存入ImageStore对象中
   [[MyImageStore sharedStore] setImage:image forKey:@"CYFStore"];
