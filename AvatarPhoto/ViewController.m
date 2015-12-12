@@ -101,7 +101,6 @@
   [alert addAction:[UIAlertAction actionWithTitle:@"照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-
     //创建UIPopoverController对象前先检查当前设备是不是ipad
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
       self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
@@ -109,17 +108,16 @@
       [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
                                       permittedArrowDirections:UIPopoverArrowDirectionAny
                                                       animated:YES];
-    }
-    else{
+    }else{
       [self presentViewController:imagePicker animated:YES completion:nil];
-
     }
+
+
   }]];
 
   [alert addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
     //创建UIPopoverController对象前先检查当前设备是不是ipad
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
       self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
@@ -127,10 +125,10 @@
       [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
                                       permittedArrowDirections:UIPopoverArrowDirectionAny
                                                       animated:YES];
-    }
-    else{
+    }else{
       [self presentViewController:imagePicker animated:YES completion:nil];
     }
+
   }]];
 
   [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -140,21 +138,6 @@
   //弹出提示框；
   [self presentViewController:alert animated:true completion:nil];
 
-
-
-
-  //创建UIPopoverController对象前先检查当前设备是不是ipad
-  if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-    self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
-    self.imagePickerPopover.delegate = self;
-    [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
-                                    permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                    animated:YES];
-  }
-  else
-  {
-    [self presentViewController:imagePicker animated:YES completion:nil];
-  }
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
