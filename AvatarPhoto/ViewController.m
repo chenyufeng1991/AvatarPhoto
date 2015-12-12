@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "MyImageStore.h"
 
-@interface ViewController ()
+@interface ViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
