@@ -111,7 +111,15 @@
   
   //将照片放入UIImageView对象
   self.avatarImage.image = image;
-  
+
+
+  //把一张照片保存到图库中，此时无论是这张照片是照相机拍的还是本身从图库中取出的，都会保存到图库中；
+   UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+
+  //压缩图片,如果图片要上传到服务器或者网络，则需要执行该步骤（压缩），第二个参数是压缩比例，转化为NSData类型；
+    NSData *fileData = UIImageJPEGRepresentation(image, 1.0);
+
+
   //判断UIPopoverController对象是否存在
   if (self.imagePickerPopover) {
     [self.imagePickerPopover dismissPopoverAnimated:YES];
@@ -123,6 +131,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
   }
 }
+
 
 
 @end
